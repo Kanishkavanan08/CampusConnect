@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../tasks/task_screen.dart'; // Import our new Task Screen
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -11,9 +12,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   // Track which tab is currently selected (0 = Tasks, 1 = Events, etc.)
   int _currentIndex = 0;
 
-  // A list of simple widgets to show based on the selected tab
+  // A list of widgets to show based on the selected tab
   final List<Widget> _screens = [
-    const Center(child: Text('Tasks Screen', style: TextStyle(fontSize: 20))),
+    const TaskScreen(), // <--- Index 0 now points to our working Provider screen!
     const Center(child: Text('Events Screen', style: TextStyle(fontSize: 20))),
     const Center(child: Text('Announcements Screen', style: TextStyle(fontSize: 20))),
     const Center(child: Text('Profile Screen', style: TextStyle(fontSize: 20))),

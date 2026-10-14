@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart'; // Import provider
+
 import 'theme/app_theme.dart';
-import 'screens/auth/splash_screen.dart'; // Import our new Splash Screen
+import 'screens/auth/splash_screen.dart';
+import 'providers/task_provider.dart'; // Import our new provider
 
 void main() {
-  runApp(const CampusConnectApp());
+  runApp(
+    // Wrap the app in a MultiProvider
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => TaskProvider()),
+      ],
+      child: const CampusConnectApp(),
+    ),
+  );
 }
 
 class CampusConnectApp extends StatelessWidget {
@@ -15,7 +26,7 @@ class CampusConnectApp extends StatelessWidget {
       title: 'CampusConnect',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const SplashScreen(), // The app now starts here!
+      home: const SplashScreen(),
     );
   }
 }
